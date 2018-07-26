@@ -334,17 +334,15 @@ tagsInput.directive('tagsInput', function($timeout, $document, $window, $q, tags
                         scope.hasFocus = true;
                         events.trigger('input-focus');
                     },
-                    blur: function() {
-                        $timeout(function() {
-                            var activeElement = $document.prop('activeElement'),
-                                lostFocusToBrowserWindow = activeElement === input[0],
-                                lostFocusToChildElement = element[0].contains(activeElement);
+                    blur: function($event) {
+                        var activeElement = $event.relatedTarget,
+                            lostFocusToBrowserWindow = activeElement === input[0],
+                            lostFocusToChildElement = element[0].contains(activeElement);
 
-                            if (lostFocusToBrowserWindow || !lostFocusToChildElement) {
-                                scope.hasFocus = false;
-                                events.trigger('input-blur');
-                            }
-                        });
+                        if (lostFocusToBrowserWindow || !lostFocusToChildElement) {
+                            scope.hasFocus = false;
+                            events.trigger('input-blur');
+                        }
                     },
                     paste: function($event) {
                         $event.getTextData = function() {
