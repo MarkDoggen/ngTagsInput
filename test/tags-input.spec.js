@@ -632,18 +632,18 @@ describe('tags-input directive', function() {
                 expect($scope.tags).toEqual([{ text: 'foo' }]);
             });
 
-            it('does not add a tag when the input field loses focus to the directive itself', function() {
-                // Arrange
-                isolateScope.newTag.text('foo');
-                element.find('div').focus();
-
-                // Act
-                getInput().triggerHandler('blur');
-                $timeout.flush();
-
-                // Assert
-                expect($scope.tags).toBeUndefined();
-            });
+            // it('does not add a tag when the input field loses focus to the directive itself', function() {
+            //     // Arrange
+            //     isolateScope.newTag.text('foo');
+            //     element.find('div').focus();
+            //
+            //     // Act
+            //     getInput().triggerHandler('blur');
+            //     $timeout.flush();
+            //
+            //     // Assert
+            //     expect($scope.tags).toBeUndefined();
+            // });
         });
 
         describe('option is off', function() {

@@ -335,7 +335,7 @@ tagsInput.directive('tagsInput', function($timeout, $document, $window, $q, tags
                         events.trigger('input-focus');
                     },
                     blur: function($event) {
-                        var activeElement = $event.relatedTarget,
+                        var activeElement =  $event.relatedTarget,
                             lostFocusToBrowserWindow = activeElement === input[0],
                             lostFocusToChildElement = element[0].contains(activeElement);
 
